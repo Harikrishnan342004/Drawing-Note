@@ -40,6 +40,7 @@ prevY = e.clientY;
 
 
 
+// coloursbutton  get from html & store in the variable clrs ....
 
 let clrs = document.querySelectorAll(".clr");
 clrs = Array.from(clrs);
@@ -52,7 +53,20 @@ clrs.forEach(clr => {
 
 //Clearing Canvas
 
-let clearBtn = document.querySelector(".clear");
+let clearBtn = document.querySelector(".clean");         // store the clear button acccesss
 clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+})
+
+
+
+// Saving the drawing into image ....
+
+let saveBtn = document.querySelector(".save");
+saveBtn.addEventListener("click", () => {
+    let data = canvas.toDataURL("img/png");
+    let a = document.createElement("a");
+    a.href = data ;
+    a.download = "sketch.png";
+    a.click();
 })
